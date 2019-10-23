@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<html>
+
+<head>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script type="text/javascript"
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<title>Fatoni</title>
+</head>
+
+<body>
+	<div class="col-12 h-100 d-flex justify-content-center">
+		<div class="col-4 d-flex align-items-center">
+			<form class="col-12" method="POST" action="{% url 'submit' %}">
+				<p class="text-center"><b>FORM</b></p>
+				<hr />
+				{% csrf_token %}
+				{{ form }}
+				<br>
+				<button type="submit" class="btn btn-dark btn-block">SUBMIT</button>
+				<div class="text-center mt-2">
+					<a href="{% url 'data' %}">Lihat Semua Data</a>
+				</div>
+				{% if messages %}
+				<div class="messages">
+					{% for message in messages %}
+					<p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+					{% endfor %}
+				</div>
+				{% endif %}
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

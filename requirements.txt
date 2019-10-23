@@ -1,0 +1,4 @@
+Django==2.1.1
+whitenoise==3.3.0
+pyodbc==4.0.27
+django-pyodbc-azure==2.1.0.0
